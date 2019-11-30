@@ -1,0 +1,25 @@
+From 9aa55a845aa2cdbc75444e2bcc9dd2a08da047ff Mon Sep 17 00:00:00 2001
+From: Shane Freeder <theboyetronic@gmail.com>
+Date: Sat, 30 Nov 2019 15:01:51 +0000
+Subject: [PATCH] Prevent entity movement loading chunks
+
+
+diff --git a/src/main/java/net/minecraft/server/VoxelShapes.java b/src/main/java/net/minecraft/server/VoxelShapes.java
+index c8bd4b703..d7f9f37b5 100644
+--- a/src/main/java/net/minecraft/server/VoxelShapes.java
++++ b/src/main/java/net/minecraft/server/VoxelShapes.java
+@@ -237,7 +237,10 @@ public final class VoxelShapes {
+ 
+                             if (k2 < 3) {
+                                 blockposition_mutableblockposition.a(enumaxiscycle1, i2, j2, l1);
+-                                IBlockData iblockdata = iworldreader.getType(blockposition_mutableblockposition);
++                                // Paper start - Don't load chunks for collison checks
++                                IBlockData iblockdata = iworldreader.getTypeIfLoaded(blockposition_mutableblockposition);
++                                if (iblockdata == null) return 0.0D;
++                                // Paper end
+ 
+                                 if ((k2 != 1 || iblockdata.f()) && (k2 != 2 || iblockdata.getBlock() == Blocks.MOVING_PISTON)) {
+                                     d0 = iblockdata.b((IBlockAccess) iworldreader, blockposition_mutableblockposition, voxelshapecollision).a(enumdirection_enumaxis2, axisalignedbb.d((double) (-blockposition_mutableblockposition.getX()), (double) (-blockposition_mutableblockposition.getY()), (double) (-blockposition_mutableblockposition.getZ())), d0);
+-- 
+2.24.0
+
