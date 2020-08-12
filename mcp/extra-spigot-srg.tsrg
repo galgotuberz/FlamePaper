@@ -1,0 +1,2 @@
+net/minecraft/server/LootEntryAbstract$Serializer net/minecraft/loot/LootEntry$Serializer
+	a (Lcom/google/gson/JsonObject;Lnet/minecraft/server/LootEntryAbstract;Lcom/google/gson/JsonSerializationContext;)V func_230424_a_

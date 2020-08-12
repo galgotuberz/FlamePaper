@@ -1,3 +1,6 @@
+.gradle/
+build/
+
 # Eclipse stuff
 .classpath
 .project
@@ -10,10 +13,8 @@
 nbproject/
 nbactions.xml
 
-# we use maven!
 build.xml
 
-# maven
 target/
 dependency-reduced-pom.xml
 
@@ -21,7 +22,6 @@ dependency-reduced-pom.xml
 .*.sw[a-p]
 
 # various other potential build files
-build/
 bin/
 dist/
 manifest.mf

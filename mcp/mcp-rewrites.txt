@@ -1,0 +1,34 @@
+# Paper MCP renames
+#
+# We use some different MCP names for our dev environment because the MCP names
+# sometimes clash with the CraftBukkit added variable names. We use spigot names
+# after the reobf task, so these names can be changed to whatever we want -
+# they only affect the dev environment.
+
+# The format of this file is simple:
+# <srg_name>,<new_name>
+# And for reference, the old mcp name is appended to the end of the line after a comment (#)
+# Though that isn't required
+
+# Fields
+
+field_71305_c,worldsMcp # worlds
+field_82862_h,playerMcp # player
+field_82855_n,playerMcp # player
+field_192390_i,playerMcp # player
+
+# Methods
+
+func_184102_h,getServerMcp # getServer
+func_75815_a,loadChunkMcp # loadChunk
+func_152688_e,getValuesMcp # getValues
+
+# Params
+
+p_180679_2_,posMcp # pos
+p_180673_2_,posMcp # pos
+p_184881_2_,senderMcp # sender
+p_194145_2_,senderMcp # sender
+p_186019_2_,dataMcp # data
+p_184795_1_,playerMcp # player
+p_75752_1_, playerMcp # player
