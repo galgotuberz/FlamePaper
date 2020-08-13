@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Kyle Wood <demonwav@gmail.com>
+Date: Wed, 12 Aug 2020 21:32:36 -0700
+Subject: [PATCH] Fix remap
+
+The only issue is a missing implementation for an interface added to a
+class which was decompiled where the implementation class was not
+previously decompiled.
+
+diff --git a/src/main/java/net/minecraft/entity/NPCMerchant.java b/src/main/java/net/minecraft/entity/NPCMerchant.java
+index 280d7303964caa30653c915435fd97aafe2839c2..f0522e9edd1f45089afe4895844b9bd9e9c3be98 100644
+--- a/src/main/java/net/minecraft/entity/NPCMerchant.java
++++ b/src/main/java/net/minecraft/entity/NPCMerchant.java
+@@ -60,4 +60,12 @@ public class NPCMerchant implements IMerchant {
+    public SoundEvent func_213714_ea() {
+       return SoundEvents.field_187915_go;
+    }
++
++    // Paper start - remap fix
++    private org.bukkit.craftbukkit.inventory.CraftMerchant craftMerchant;
++    @Override
++    public org.bukkit.craftbukkit.inventory.CraftMerchant getCraftMerchant() {
++        return (craftMerchant == null) ? craftMerchant = new org.bukkit.craftbukkit.inventory.CraftMerchant(this) : craftMerchant;
++    }
++    // Paper end
+ }
